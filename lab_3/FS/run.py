@@ -31,7 +31,7 @@ def register():
     ip = data.get('ip')
     as_ip = data.get('as_ip')
     as_port = int(data.get('as_port'))
-    logging.info('register:{},{},{},{},{}'.format(hostname,ip,as_ip,as_port))
+    logging.info('register:{},{},{},{}'.format(hostname,ip,as_ip,as_port))
     res = False
     if hostname and ip and as_ip and as_port:
         sock = socket(AF_INET, SOCK_STREAM)

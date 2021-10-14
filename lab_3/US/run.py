@@ -13,7 +13,7 @@ def fibonacci():
     number = request.args.get('number')
     as_ip = request.args.get('as_ip')
     as_port = int(request.args.get('as_port'))
-    logging.info("Revived:{},{},{},{},{}".format(hostname,fs_port,number,as_ip,as_port))
+    logging.info("Revived:{},{},{},{}".format(hostname,fs_port,number,as_ip,as_port))
     if  hostname and fs_port and number and as_ip and as_port:
         sock = socket(AF_INET, SOCK_DGRAM)
         msg = "TYPE=A\nNAME={}".format(hostname)
