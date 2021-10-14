@@ -8,13 +8,12 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 @app.route('/fibonacci',methods=['Get'])
 def fibonacci():
-    hostname = request.args.get('hostname','')
-    fs_port = request.args.get('fs_port','')
-    number = request.args.get('number','')
-    as_ip = request.args.get('as_ip','127.0.0.1')
-    as_port = int(request.args.get('as_port',53533))
+    hostname = request.args.get('hostname')
+    fs_port = request.args.get('fs_port')
+    number = request.args.get('number')
+    as_ip = request.args.get('as_ip')
+    as_port = int(request.args.get('as_port'))
     logging.info("Revived:{},{},{},{},{}".format(hostname,fs_port,number,as_ip,as_port))
-    res = False
     if  hostname and fs_port and number and as_ip and as_port:
         sock = socket(AF_INET, SOCK_DGRAM)
         msg = "TYPE=A\nNAME={}".format(hostname)

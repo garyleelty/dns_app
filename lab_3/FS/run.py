@@ -30,11 +30,7 @@ def register():
     hostname = data.get('hostname')
     ip = data.get('ip')
     as_ip = data.get('as_ip')
-    as_port = int(data.get('as_port' ))
-    hostname = "fib.com"
-    ip ='127.0.0.1'
-    as_ip = '127.0.0.1'
-    as_port =53533
+    as_port = int(data.get('as_port'))
     logging.info('register:{},{},{},{},{}'.format(hostname,ip,as_ip,as_port))
     res = False
     if hostname and ip and as_ip and as_port:
@@ -46,17 +42,6 @@ def register():
         logging.info(md.decode())
         sock.close()
         
-        if md.decode() == "Success":
-            return jsonify("Successful"), 201
-        else:
-            return jsonify("fail"), 500
-    elif res is False:
-        sock = socket(AF_INET, SOCK_DGRAM)
-        msg = "TYPE=A\n"+"NAME={}\nVALUE={}TTL=10".format(hostname,ip)
-        sock.sendto(msg.encode(),(as_ip,as_port))
-        md, sd = sock.recvfrom(2048)
-        logging.info(md.decode())
-        sock.close()
         if md.decode() == "Success":
             return jsonify("Successful"), 201
         else:
